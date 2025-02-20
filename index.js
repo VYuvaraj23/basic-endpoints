@@ -4,6 +4,7 @@
 import express from "express";
 import cors from "cors";
 import router from "./src/routes/index.js";
+import logger from "./src/middleWare/logger.midldleware.js";
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -14,6 +15,7 @@ const PORT = process.env.PORT || 8000;
 
 app.use(cors());
 app.use(express.json());
+app.use(logger)
 app.use(router)
 
 app.get("/", (req, res) => {
@@ -24,5 +26,5 @@ app.get("/", (req, res) => {
 
 
 app.listen(PORT, () => {
-  console.log("hello work");
+  console.log("hello work "+PORT);
 });
